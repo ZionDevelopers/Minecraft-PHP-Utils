@@ -1,8 +1,9 @@
 <?php
-/**
- * Minecraft Utils
 
- * @link https://github.com/ZionDevelopers/Minecraft-PHP-Utils/blob/master/Minecraft.Worlds.Backupper.php 
+/**
+ * Minecraft Utils: Minecraft World Backupper
+
+ * @link https://raw.githubusercontent.com/ZionDevelopers/Minecraft-PHP-Utils/master/Minecraft.Worlds.Backupper.php Source code on github
  * @copyright 2017, Júlio César de Oliveira
  * @author Júlio César de Oliveira <talk@juliocesar.me>
  * @license http://www.apache.org/licenses/LICENSE-2.0.html Apache 2.0 License
@@ -14,8 +15,12 @@ define('DS', DIRECTORY_SEPARATOR);
 // Define timezone
 date_default_timezone_set('America/Sao_Paulo');
 
+// Define timer
+define('TIMER', true);
+
 // Define new line constant determined by the O.S
 define('NL', PHP_EOL);
+
 define('DEBUG', true);
 define('USER', get_current_user());
 define('BACKUP_WORLDS_EVERY_X_MINUTES', 5); // 5 Minutes
@@ -205,11 +210,8 @@ function backupWorlds() {
 // Backup minecraft worlds
 backupWorlds();
 
-// Run backups while needed
-$runBackupper = true;
-
 // Run timer
-while ($runBackupper) {
+while (TIMER) {
 	// Minecraft is Running?
 	$mcIsRunning = isRunning();
 	
