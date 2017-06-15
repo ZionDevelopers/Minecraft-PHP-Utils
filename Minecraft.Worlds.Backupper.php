@@ -208,6 +208,7 @@ while ($runBackupper) {
 	if ($mcIsRunning) {
 		// Dump sleep info
 		dump('Waiting '. BACKUP_WORLDS_EVERY_X_MINUTES . ' minutes for the next backup.');
+		dump('');
 		// Wait
 		sleep(BACKUP_WORLDS_EVERY_X_MINUTES * 60);
 		// Backup worlds
