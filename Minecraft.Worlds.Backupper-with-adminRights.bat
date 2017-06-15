@@ -1,4 +1,5 @@
 @echo off
+TITLE Minecraft Worlds Backupper (With admin rights)
 
 echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"
 set params = %*:"=""
