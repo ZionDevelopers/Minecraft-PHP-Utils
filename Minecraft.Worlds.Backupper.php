@@ -1,4 +1,13 @@
 <?php
+/**
+ * Minecraft Utils
+
+ * @link https://github.com/ZionDevelopers/Minecraft-PHP-Utils/blob/master/Minecraft.Worlds.Backupper.php 
+ * @copyright 2017, Júlio César de Oliveira
+ * @author Júlio César de Oliveira <talk@juliocesar.me>
+ * @license http://www.apache.org/licenses/LICENSE-2.0.html Apache 2.0 License
+ */
+
 // Define Directory Separator folder delimiter by O.S
 define('DS', DIRECTORY_SEPARATOR);
 
