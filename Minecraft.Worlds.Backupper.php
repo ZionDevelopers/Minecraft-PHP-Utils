@@ -15,7 +15,7 @@ define('DS', DIRECTORY_SEPARATOR);
 // Define timezone
 date_default_timezone_set('America/Sao_Paulo');
 
-// Define timer
+// Define Timer, change to false if you don't want a backup every X minutes
 define('TIMER', true);
 
 // Define new line constant determined by the O.S
