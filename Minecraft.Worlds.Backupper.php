@@ -6,7 +6,7 @@
  * @link https://raw.githubusercontent.com/ZionDevelopers/Minecraft-PHP-Utils/master/Minecraft.Worlds.Backupper.php Source code on github
  * @copyright 2017, Júlio César de Oliveira
  * @author Júlio César de Oliveira <talk@juliocesar.me>
- * @license http://www.apache.org/licenses/LICENSE-2.0.html Apache 2.0 License
+ * @license https://creativecommons.org/licenses/by-nc-sa/4.0/ Creative Common Attribution-NonCommercial-ShareAlike 4.0 International
  */
 
 // Define Directory Separator folder delimiter by O.S
