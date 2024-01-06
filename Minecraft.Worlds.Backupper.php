@@ -89,7 +89,7 @@ function compress($archive, $folder) {
 	// Check for 7zip and perm for exec
 	if (file_exists('7z.exe') && function_exists('exec') && !$MCIsRunning) {
 		// Run 7z
-		exec('7z.exe a ' . $archive . '.7z ' . $folder . DS);
+		exec('7z.exe a "' . $archive . '.7z" "' . $folder . DS . '"');
 	// Check for winrar x64
 	} elseif (file_exists('"%progamfiles%\WinRAR\Rar.exe"') && !$MCIsRunning) {
 		exec('"%progamfiles%\WinRAR\Rar.exe" a -r ' . $archive . '.rar '. $folder . DS);
