@@ -91,11 +91,11 @@ function compress($archive, $folder) {
 		// Run 7z
 		exec('7z.exe a "' . $archive . '.7z" "' . $folder . DS . '"');
 	// Check for winrar x64
-	} elseif (file_exists('"%progamfiles%\WinRAR\Rar.exe"') && !$MCIsRunning) {
-		exec('"%progamfiles%\WinRAR\Rar.exe" a -r ' . $archive . '.rar '. $folder . DS);
+	} elseif (file_exists('"%programfiles%\WinRAR\Rar.exe"') && !$MCIsRunning) {
+		exec('"%programfiles%\WinRAR\Rar.exe" a -r "' . $archive . '.rar" "'. $folder . DS . '"');
 	// Check for winrar x86
 	} elseif (file_exists('"%programfiles(x86)%\WinRAR\Rar.exe"') && !$MCIsRunning) {
-		exec('"%programfiles(x86)%\WinRAR\Rar.exe" a -r ' . $archive . '.rar '. $folder . DS);
+		exec('"%programfiles(x86)%\WinRAR\Rar.exe" a -r "' . $archive . '.rar" "'. $folder . DS . '"');
 	// Check for PharData
 	}  elseif (class_exists('\PharData')){
 		// Create new Archive
