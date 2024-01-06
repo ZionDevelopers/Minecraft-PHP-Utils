@@ -24,6 +24,7 @@ define('NL', PHP_EOL);
 define('DEBUG', true);
 define('USER', get_current_user());
 define('BACKUP_WORLDS_EVERY_X_MINUTES', 5); // 5 Minutes
+define('BACKUP_FOREVER', true); // Do you want to keep backing up forever (while the script is running)
 
 // Define dump function
 function dump($string, $newLine = true) {
@@ -91,10 +92,10 @@ function compress($archive, $folder) {
 		// Run 7z
 		exec('7z.exe a "' . $archive . '.7z" "' . $folder . DS . '"');
 	// Check for winrar x64
-	} elseif (file_exists('"%programfiles%\WinRAR\Rar.exe"') && !$MCIsRunning) {
+	} elseif (file_exists('"%programfiles%\WinRAR\Rar.exe"') && function_exists('exec') && !$MCIsRunning) {
 		exec('"%programfiles%\WinRAR\Rar.exe" a -r "' . $archive . '.rar" "'. $folder . DS . '"');
 	// Check for winrar x86
-	} elseif (file_exists('"%programfiles(x86)%\WinRAR\Rar.exe"') && !$MCIsRunning) {
+	} elseif (file_exists('"%programfiles(x86)%\WinRAR\Rar.exe"') && function_exists('exec') && !$MCIsRunning) {
 		exec('"%programfiles(x86)%\WinRAR\Rar.exe" a -r "' . $archive . '.rar" "'. $folder . DS . '"');
 	// Check for PharData
 	}  elseif (class_exists('\PharData')){
@@ -184,7 +185,7 @@ function backupWorlds() {
 				dump('Backupping world "' . $world . '" ...');
 				
 				// Define archive
-				$archive = $worldsFolder . $world . '-backup-' . date('y-m-d_H-i-s');
+				$archive = $worldsFolder . $world . '-backup-' . date('y-m-d_H-i');
 				// Compress World 
 				compress($archive, $worldsFolder . $world);
 				
@@ -211,12 +212,9 @@ function backupWorlds() {
 backupWorlds();
 
 // Run timer
-while (TIMER) {
-	// Minecraft is Running?
-	$mcIsRunning = isRunning();
-	
+while (TIMER) {	
 	// Check if minecraft is running
-	if ($mcIsRunning) {
+	if (BACKUP_FOREVER) {
 		// Dump sleep info
 		dump('Waiting '. BACKUP_WORLDS_EVERY_X_MINUTES . ' minutes for the next backup.');
 		dump('');
@@ -225,6 +223,9 @@ while (TIMER) {
 		// Backup worlds
 		backupWorlds();
 	} else {
-		sleep(60);
+		// Exit
+		exit('Bye!');
 	}
+	// Sleep 1 sec
+	sleep(1);
 }
